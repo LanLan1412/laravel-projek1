@@ -1,0 +1,113 @@
+:root {
+  --bg-primary: #212A3E;
+  --bg-secondary: #212A3E;
+  --txt-primary: #F1F6F9;
+  --txt-secondary: #9BA4B5;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--txt-primary);
+  /* font-family: "Lato", sans-serif; */
+}
+
+::selection {
+  /* background-color: var(--bg--fourth); */
+  /* color: var(--bg-primary); */
+}
+
+header {
+  padding: 1rem 1rem;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav svg {
+  height: 1.5rem;
+}
+
+header nav p {
+  font-size: 3rem;
+}
+
+main {
+  padding: 0 1rem;
+}
+
+/* Jumbotron */
+.jumbotron {
+  border-top: 1px solid var(--txt-primary);
+  padding: 1.5rem 0;
+}
+
+.jumbotron h2 {
+  text-align: center;
+  font-weight: 400;
+  padding-bottom: 2rem;
+}
+
+.jumbotron h3, .jumbotron p {
+  text-align: center;
+  font-weight: 300;
+  color: var(--txt-secondary);
+  padding-top: .5rem;
+}
+
+.jumbotron p {
+  word-spacing: 5px;
+  padding: 0;
+  padding-bottom: 2rem;
+}
+
+/* Produk */
+.produk {
+  text-align: center;
+}
+
+.produk h1 {
+  border-bottom: 1px solid var(--txt-primary);
+  width: max-content;
+  margin: auto;
+  margin-bottom: 3rem;
+  padding-bottom: .5rem;
+}
+
+.produk > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem 1rem;
+}
+
+.produk .card {
+  background-color: var(--txt-primary);
+  width: 171px;
+  color: var(--bg-secondary);
+}
+
+.produk .card img {
+  width: inherit;
+}
+
+.produk .card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.produk .card p {
+  padding-bottom: 1rem;
+}
