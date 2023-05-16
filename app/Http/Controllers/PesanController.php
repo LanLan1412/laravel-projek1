@@ -60,11 +60,10 @@ class PesanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Barang $barang)
+    public function show(Barang $barang, $nama_barang)
     {
-        return view('pesan.index', [
-            'nama_barang' => $barang
-        ]);
+
+        return $barang::where('nama_barang', $nama_barang)->first();
     }
 
     /**

@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\BerandaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PesanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PesanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +26,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::resource('/pesan', PesanController::class)->middleware('auth');
-// Route::get('/pesan/{nama_barang}', [PesanController::class, 'index'])->middleware('auth');
+Route::resource('pesan', PesanController::class)->missing(function () {
+  return Redirect('/');
+})->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::resource('dashboard/', DashboardController::class);

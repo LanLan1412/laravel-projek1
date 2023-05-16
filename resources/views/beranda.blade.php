@@ -11,6 +11,9 @@
       <span>{{ $produk->stok }}</span>
     </div>
     <p>{{ $produk->keterangan }}</p>
+    <form action="">
+      
+    </form>
     <a href="/pesan/{{ $produk->nama_barang }}">Order Now!</a>
   </div>
 </div>
