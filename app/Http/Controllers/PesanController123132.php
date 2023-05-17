@@ -36,17 +36,15 @@ class PesanController extends Controller
             $pesanan->save();
         }
 
-        $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
-        $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $pesanan_baru->id)->first();
+        $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $cek_pesanan->id)->first();
         $pesanan_detail = new PesananDetail;
         if(empty($cek_pesanan_detail)) {   
             $pesanan_detail->barang_id = $barang->id;
-            $pesanan_detail->pesanan_id = $pesanan_baru->id;
+            $pesanan_detail->pesanan_id = $cek_pesanan->id;
             $pesanan_detail->jumlah = $request->jumlah_pesan;
             $pesanan_detail->jumlah_harga = $barang->harga*$request->jumlah_pesan;
             $pesanan_detail->save();
         } else {
-            $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $pesanan_baru->id)->first();
             $pesanan_detail->jumlah =  $pesanan_detail->jumlah + $request->jumlah_pesan;
             $harga_pesanan_detail_baru = $barang->harga * $request->jumlah_pesan;
             $pesanan_detail->jumlah_harga + $harga_pesanan_detail_baru ;

@@ -34,11 +34,16 @@ class PesanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $nama_barang)
     {
-        $barang = Barang::where('id', $id)->first();
-        $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
-        if (empty($pesanan_baru)) {
+        $barang = Barang::where('nama_barang', $nama_barang)->first();
+        $cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        if($request->jumlah_pesan > $barang->stok) {
+            return redirect('/pesan/' . $nama_barang)->with('success', 'Berhasil menambahkan ke keranjang');
+        }
+
+        // simpan ke database pesanan
+        if (empty($cek_pesanan)) {
             $pesanan['user_id'] = Auth::user()->id;
             $pesanan['tanggal'] = Carbon::now();
             $pesanan['status'] = 0;
@@ -46,13 +51,24 @@ class PesanController extends Controller
             Pesanan::create($pesanan);
         }
 
-        
-        
-        $pesanan_detail['barang_id'] = $barang->id;
-        $pesanan_detail['pesanan_id'] = $pesanan_baru->id;
-        $pesanan_detail['jumlah'] = $request->jumlah_pesan;
-        $pesanan_detail['jumlah_harga'] = $barang->harga * $pesanan_detail['jumlah'];
-        PesananDetail::create($pesanan_detail);
+
+        $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $cek_pesanan_detail)->first();
+        // simpan ke pesanan detail
+        if (empty($cek_pesanan_detail)) {
+            $pesanan_detail['barang_id'] = $barang->id;
+            $pesanan_detail['pesanan_id'] = $cek_pesanan->id;
+            $pesanan_detail['jumlah'] = $request->jumlah_pesan;
+            $pesanan_detail['jumlah_harga'] = $barang->harga * $pesanan_detail['jumlah'];
+            PesananDetail::create($pesanan_detail);
+        } else {
+            $pesanan_detail['jumlah'] = $pesanan_detail['jumlah'] + $request->jumlah_pesan;
+            $harga_pesanan_detail_baru = $barang->harga * $request->jumlah_pesan;
+            $pesanan_detail['jumlah_harga'] + $harga_pesanan_detail_baru;
+            $pesanan_detail->update();
+        }
+
+        $barang->jumlah_harga = $pesanan['jumlah_harga'] + $barang->harga * $request->jumlah_pesan;
+        $pesanan->update();
         
         return redirect('/')->with('success', 'berhasil menambahkan kekeranjang');
     }
@@ -63,7 +79,10 @@ class PesanController extends Controller
     public function show(Barang $barang, $nama_barang)
     {
 
-        return $barang::where('nama_barang', $nama_barang)->first();
+        $barang = $barang::where('nama_barang', $nama_barang)->first();
+        return view('pesan.index', [
+            'barang' => $barang
+        ]);
     }
 
     /**

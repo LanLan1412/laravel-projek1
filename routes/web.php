@@ -26,9 +26,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::resource('pesan', PesanController::class)->missing(function () {
-  return Redirect('/');
-})->middleware('auth');
+Route::get('/pesan', fn() => view('beranda'));
+
+Route::resource('pesan', PesanController::class)->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::resource('dashboard/', DashboardController::class);

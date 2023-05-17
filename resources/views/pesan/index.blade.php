@@ -2,6 +2,7 @@
     {{ session('success') }}
 @endif
 <h1>{{ $barang->nama_barang }}</h1>
+<h2></h2>
 <form action="/pesan" method="post">
   @csrf
   <div>
