@@ -34,13 +34,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Barang::create([
-            'nama_barang' => 'Hoddie Distro',
+            'nama_barang' => 'AIR JORDAN 1 HIGH CHICAGO LOST AND FOUND',
             'harga' => 200.000,
             'stok' => 100,
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
         ]);
         Barang::create([
-            'nama_barang' => 'Baju Distro',
+            'nama_barang' => 'AIR JORDAN 1 HIGH TRAVIS SCOTT',
             'harga' => 100.000,
             'stok' => 80,
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
         ]);
         Barang::create([
-            'nama_barang' => 'Celana Distro',
+            'nama_barang' => 'AIR JORDAN 1 LOW FRAGMENT X TRAVIS SCOTT',
             'harga' => 90.000,
             'stok' => 80,
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'

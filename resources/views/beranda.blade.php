@@ -1,21 +1,22 @@
 @extends('layouts.main')
 
 @section('main')
-@foreach ($barangs as $produk)
-<div class="card">
-  <img src="" alt="">
-  <div>
-    <h2>{{ $produk->nama_barang }}</h2>
-    <div>
-      <span><strong>Rp:</strong> {{ $produk->harga }}.000</span><br>
-      <span>{{ $produk->stok }}</span>
+<main>
+  <div class="container">
+    @foreach ($barangs as $produk)
+    <div class="card">
+      <a href="/pesan/{{ $produk->nama_barang }}">
+        <img src="img/1.jpg" alt="{{ $produk->nama_barang }}">
+        <div>
+          <h2>{{ $produk->nama_barang }}</h2>
+          <div>
+            <p><small>Rp.</small>{{ $produk->harga }}.000</p>
+            <small>stok {{ $produk->stok }}</small>
+          </div>
+        </div>
+      </a>
     </div>
-    <p>{{ $produk->keterangan }}</p>
-    <form action="">
-      
-    </form>
-    <a href="/pesan/{{ $produk->nama_barang }}">Order Now!</a>
+    @endforeach
   </div>
-</div>
-@endforeach
+</main>
 @endsection

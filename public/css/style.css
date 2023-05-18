@@ -1,8 +1,8 @@
 :root {
-  --bg-primary: #212A3E;
-  --bg-secondary: #212A3E;
-  --txt-primary: #F1F6F9;
-  --txt-secondary: #9BA4B5;
+  --bg-primary: #EFF5F5;
+  --bg-secondary: #EB6440;
+  --txt-primary: #497174;
+  --txt-secondary: #D6E4E5;
 }
 
 * {
@@ -10,13 +10,12 @@
   box-sizing: border-box;
   text-decoration: none;
   scroll-behavior: smooth;
-  font-family: sans-serif;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--txt-primary);
-  /* font-family: "Lato", sans-serif; */
+  font-family: "Lato", sans-serif;
 }
 
 ::selection {
@@ -24,90 +23,52 @@ body {
   /* color: var(--bg-primary); */
 }
 
-header {
-  padding: 1rem 1rem;
-}
-
-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header nav svg {
-  height: 1.5rem;
-}
-
-header nav p {
-  font-size: 3rem;
-}
-
 main {
-  padding: 0 1rem;
+  padding: 0 3rem;
 }
 
-/* Jumbotron */
-.jumbotron {
-  border-top: 1px solid var(--txt-primary);
-  padding: 1.5rem 0;
-}
-
-.jumbotron h2 {
-  text-align: center;
-  font-weight: 400;
-  padding-bottom: 2rem;
-}
-
-.jumbotron h3, .jumbotron p {
-  text-align: center;
-  font-weight: 300;
-  color: var(--txt-secondary);
-  padding-top: .5rem;
-}
-
-.jumbotron p {
-  word-spacing: 5px;
-  padding: 0;
-  padding-bottom: 2rem;
-}
-
-/* Produk */
-.produk {
-  text-align: center;
-}
-
-.produk h1 {
-  border-bottom: 1px solid var(--txt-primary);
-  width: max-content;
-  margin: auto;
-  margin-bottom: 3rem;
-  padding-bottom: .5rem;
-}
-
-.produk > div {
+.container {
   display: flex;
-  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--txt-secondary);
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.card a {
+  height: auto;
+  color: inherit;
+}
+
+.card a img {
+  width: 300px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card a div {
+  width: 300px;
+  text-align: center;
+}
+
+.card a div h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  height: 50px;
+  margin: 20px 0;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem 1rem;
 }
 
-.produk .card {
-  background-color: var(--txt-primary);
-  width: 171px;
-  color: var(--bg-secondary);
+.card a div div {
+  width: 17rem;
+  margin: 0 auto;
+  padding-bottom: 15px;
 }
 
-.produk .card img {
-  width: inherit;
-}
-
-.produk .card h2 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding-bottom: 1rem;
-}
-
-.produk .card p {
-  padding-bottom: 1rem;
+.card a div div p {
+  margin-bottom: 3px;
 }

@@ -14,6 +14,10 @@ class PesanController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function pesan() {
+        return redirect('/');
+    }
+
     public function index()
     {
         $barangs = Barang::paginate(20);
@@ -34,42 +38,57 @@ class PesanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $nama_barang)
+    public function store(Request $request)
     {
-        $barang = Barang::where('nama_barang', $nama_barang)->first();
+        $id = $request->id;
+        $barang = Barang::where('id', $id)->first();
+        $tanggal = Carbon::now();
+
+        // validasi apakah melebihi stok
+        if ($request->jumlah_pesan > $barang->stok) {
+            return redirect('/pesan/' . $barang->nama_barang);
+        }
+
+        // cek validasi
         $cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
-        if($request->jumlah_pesan > $barang->stok) {
-            return redirect('/pesan/' . $nama_barang)->with('success', 'Berhasil menambahkan ke keranjang');
-        }
 
-        // simpan ke database pesanan
+        //    simpan ke database pesanan
         if (empty($cek_pesanan)) {
-            $pesanan['user_id'] = Auth::user()->id;
-            $pesanan['tanggal'] = Carbon::now();
-            $pesanan['status'] = 0;
-            $pesanan['jumlah_harga'] = 0;
-            Pesanan::create($pesanan);
+            $pesanan = new Pesanan;
+            $pesanan->user_id = Auth::user()->id;
+            $pesanan->tanggal = $tanggal;
+            $pesanan->status = 0;
+            $pesanan->jumlah_harga = 0;
+            $pesanan->save();
         }
 
+        // simpan ke database pesanan detail
+        $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
 
-        $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $cek_pesanan_detail)->first();
-        // simpan ke pesanan detail
-        if (empty($cek_pesanan_detail)) {
-            $pesanan_detail['barang_id'] = $barang->id;
-            $pesanan_detail['pesanan_id'] = $cek_pesanan->id;
-            $pesanan_detail['jumlah'] = $request->jumlah_pesan;
-            $pesanan_detail['jumlah_harga'] = $barang->harga * $pesanan_detail['jumlah'];
-            PesananDetail::create($pesanan_detail);
+        // cek pesanan detail
+        $cek_pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $pesanan_baru->id)->first();
+        if(empty($cek_pesanan_detail)) {
+            $pesanan_detail = new PesananDetail();
+            $pesanan_detail->barang_id = $barang->id;
+            $pesanan_detail->pesanan_id = $pesanan_baru->id;
+            $pesanan_detail->jumlah = $request->jumlah_pesan;
+            $pesanan_detail->jumlah_harga = $barang->harga * $request->jumlah_pesan;
+            $pesanan_detail->save();
         } else {
-            $pesanan_detail['jumlah'] = $pesanan_detail['jumlah'] + $request->jumlah_pesan;
+            $pesanan_detail = PesananDetail::where('barang_id', $barang->id)->where('pesanan_id', $pesanan_baru->id)->first();
+            $pesanan_detail->jumlah = $pesanan_detail->jumlah + $request->jumlah_pesan;
+
+            // harga sekarang
             $harga_pesanan_detail_baru = $barang->harga * $request->jumlah_pesan;
-            $pesanan_detail['jumlah_harga'] + $harga_pesanan_detail_baru;
+            $pesanan_detail->jumlah_harga = $pesanan_detail->jumlah_harga + $harga_pesanan_detail_baru;
             $pesanan_detail->update();
         }
 
-        $barang->jumlah_harga = $pesanan['jumlah_harga'] + $barang->harga * $request->jumlah_pesan;
+        // jumlah pesanan
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga + $barang->harga * $request->jumlah_pesan;
         $pesanan->update();
-        
+
         return redirect('/')->with('success', 'berhasil menambahkan kekeranjang');
     }
 
