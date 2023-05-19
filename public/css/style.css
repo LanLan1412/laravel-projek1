@@ -1,8 +1,9 @@
 :root {
-  --bg-primary: #EFF5F5;
-  --bg-secondary: #EB6440;
-  --txt-primary: #497174;
-  --txt-secondary: #D6E4E5;
+  --bg-primary: #F1F6F9;
+  --bg-secondary: #2C3333;
+  --bg-third: #FFFAF4;
+  --txt-primary: #212A3E;
+  --txt-secondary: #9BA4B5;
 }
 
 * {
@@ -10,12 +11,15 @@
   box-sizing: border-box;
   text-decoration: none;
   scroll-behavior: smooth;
+  border: none;
+  padding: 0;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--txt-primary);
   font-family: "Lato", sans-serif;
+  position: relative;
 }
 
 ::selection {
@@ -23,52 +27,171 @@ body {
   /* color: var(--bg-primary); */
 }
 
-main {
-  padding: 0 3rem;
+.float-wa {
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  background-color: #25D366;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  right: 20;
+  bottom: 20;
 }
 
-.container {
+
+.float-wa svg {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5;
+}
+
+header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+header nav svg {
+  width: 25px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+header nav h1 {
+  font-size: 5rem;
+}
+
+header nav > div {
+  display: flex;
+  justify-content: space-between;
+  width: 7vw;
+}
+
+header nav div div {
+  display: flex;
+}
+
+header nav div div p {
+  background-color: var(--txt-primary);
+  color: var(--bg-third);
+  font-size: .6rem;
+  display: grid;
+  place-items: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+header nav div button {
+  background-color: inherit;
+  cursor: pointer;
+}
+
+header nav div svg {
+  width: 25px;
+  height: 40px;
+}
+
+main {
+  padding: 0 3rem;
+  min-height: 90vh;
+}
+
+.container .produk {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  font-weight: 400;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--txt-primary);
 }
 
 .card {
-  background-color: var(--txt-secondary);
+  background-color: var(--bg-third);
   margin: 0 auto;
-  border-radius: 10px;
 }
 
 .card a {
-  height: auto;
+  text-align: center;
   color: inherit;
 }
 
 .card a img {
   width: 300px;
-  border-radius: 10px 10px 0 0;
 }
 
 .card a div {
   width: 300px;
-  text-align: center;
 }
 
-.card a div h2 {
+.card a h2 {
   font-weight: 400;
   font-size: 1rem;
   height: 50px;
+  width: 300px;
   margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.card a div div {
+.card a div {
   width: 17rem;
   margin: 0 auto;
   padding-bottom: 15px;
 }
 
-.card a div div p {
+.card a div p {
   margin-bottom: 3px;
+}
+
+footer {
+  background-color: var(--bg-secondary);
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--txt-secondary);
+  padding-top: 2rem;
+  padding: 2rem 5rem;
+}
+
+footer div:first-child {
+  display: flex;
+  align-items: center;
+  width: 270px;
+  margin-right: 3rem;
+}
+
+footer div:first-child h3 {
+  font-size: 3rem;
+  color: var(--bg-third);
+  padding-right: 10px;
+}
+
+footer div:nth-child(2) {
+  margin-right: 1rem;
+  width: 30rem;
+}
+
+footer div:nth-child(2) h3 {
+  color: var(--bg-third);
+  font-size: 1.5rem;
 }

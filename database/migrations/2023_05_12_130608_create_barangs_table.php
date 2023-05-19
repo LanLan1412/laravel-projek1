@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('stok');
             $table->string('keterangan');
+            $table->string('category');
             $table->timestamps();
         });
     }
