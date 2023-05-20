@@ -38,12 +38,13 @@ class DashboardController extends Controller
             'nama_barang' => 'required|max:255',
             'harga' => 'required',
             'stok' => 'required',
+            'category' => 'required',
             'keterangan' => 'required'
         ]);
 
         Barang::create($validateData);
 
-        return redirect('/dashboard')->with('Success', 'New product has been added');
+        return redirect('/dashboard')->with('success', 'New product has been added');
     }
 
     /**

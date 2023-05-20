@@ -13,6 +13,10 @@
     <input type="number" name="stok" id="stok" placeholder="100" required value="{{ old('stok') }}">
   </div>
   <div>
+    <label for="category">Kategori</label>
+    <input type="text" name="category" id="category" placeholder="Baju" required value="{{ old('category') }}">
+  </div>
+  <div>
     <label for="keterangan">Keterangan</label>
     <input type="text" name="keterangan" id="keterangan" required placeholder="Masukkan Keterangan">
   </div>

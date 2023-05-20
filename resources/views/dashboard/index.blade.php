@@ -2,7 +2,7 @@
 <h2>Welcome back, {{ auth()->user()->name }}</h2>
 <a href="/dashboard/create">Create new product</a>
 @if (session()->has('success'))
-    sudah masuk produk barunya
+  {{ session('success') }}
 @endif
 @foreach ($products as $produk)
 <div class="card">

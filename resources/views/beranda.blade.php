@@ -3,7 +3,7 @@
 @section('main')
 <div class="container">
   @auth
-  <h2>Welcome back, {{ auth()->user()->name }}</h2>
+    <h2>Welcome back, {{ auth()->user()->name }}</h2>
   @endauth
   <section class="produk">
     @foreach ($barangs as $produk)
