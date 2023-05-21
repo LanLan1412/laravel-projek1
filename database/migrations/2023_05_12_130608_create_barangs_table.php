@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
-            $table->integer('harga');
+            $table->decimal('harga', 10, 0);
             $table->integer('stok');
             $table->string('keterangan');
             $table->string('category');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

@@ -39,8 +39,13 @@ class DashboardController extends Controller
             'harga' => 'required',
             'stok' => 'required',
             'category' => 'required',
+            'gambar' => 'image|file|max:2048',
             'keterangan' => 'required'
         ]);
+
+        if ($request->file('gambar')) {
+            $validateData['gambar'] = $request->file('gambar')->store('product-images');
+        }
 
         Barang::create($validateData);
 
@@ -58,9 +63,11 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Barang $barang)
+    public function edit($barang)
     {
-        //
+        return view('dashboard.edit', [
+            'barang' => Barang::where('nama_barang', $barang)->first()
+        ]);
     }
 
     /**
@@ -68,15 +75,24 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Barang $barang)
     {
-        //
+        $validateData = $request->validate([
+            'nama_barang' => 'required|max:255',
+            'harga' => 'required',
+            'stok' => 'required',
+            'category' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        Barang::where('id', $request->id)->update($validateData);
+        return redirect('/dashboard')->with('success', 'Product has been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        Barang::destroy($barang->id);
-        return redirect('/dashboard')->with('Success', 'Product has been deleted!');
+        Barang::destroy($id);
+        return redirect('/dashboard')->with('success', 'Product has been deleted!');
     }
 }

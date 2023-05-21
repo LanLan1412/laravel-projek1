@@ -10,7 +10,7 @@
   <div>
     <h2>{{ $produk->nama_barang }}</h2>
     <div>
-      <span>{{ $produk->harga }}</span>
+      <span>{{ number_format($produk->harga, 0, ',', '.') }}</span>
       <span>{{ $produk->stok }}</span>
     </div>
       <p>{{ $produk->keterangan }}</p>
@@ -20,7 +20,7 @@
           @csrf
           <button onclick="return confirm('Are you sure?')">delete produk</button>
         </form>
-        <a href="">edit produk</a>
+        <a href="/dashboard/{{ $produk->nama_barang }}/edit">edit produk</a>
       </div>
   </div>
 </div>

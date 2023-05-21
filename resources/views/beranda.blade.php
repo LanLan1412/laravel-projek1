@@ -9,7 +9,7 @@
     @foreach ($barangs as $produk)
     <div class="card">
       <a href="/pesan/{{ $produk->nama_barang }}">
-        <img src="img/1.jpg" alt="{{ $produk->nama_barang }}">
+        <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_barang }}">
         <h2>{{ $produk->nama_barang }}</h2>
         <div>
           <p><small>Rp.</small>{{ $produk->harga }}.000</p>

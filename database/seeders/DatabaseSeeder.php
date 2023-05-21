@@ -35,28 +35,28 @@ class DatabaseSeeder extends Seeder
 
         Barang::create([
             'nama_barang' => 'AIR JORDAN 1 HIGH CHICAGO LOST AND FOUND',
-            'harga' => 200.000,
+            'harga' => 200000,
             'stok' => 100,
             'category' => 'Sepatu',
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
         ]);
         Barang::create([
             'nama_barang' => 'AIR JORDAN 1 HIGH TRAVIS SCOTT',
-            'harga' => 100.000,
+            'harga' => 100000,
             'stok' => 80,
             'category' => 'Sepatu',
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
         ]);
         Barang::create([
             'nama_barang' => 'Topi Distro',
-            'harga' => 75.000,
+            'harga' => 75000,
             'stok' => 80,
             'category' => 'Topi',
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'
         ]);
         Barang::create([
             'nama_barang' => 'AIR JORDAN 1 LOW FRAGMENT X TRAVIS SCOTT',
-            'harga' => 90.000,
+            'harga' => 90000,
             'stok' => 80,
             'category' => 'Sepatu',
             'keterangan' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quaerat quasi facilis nihil reiciendis quae natus cumque delectus ipsa magnam?'

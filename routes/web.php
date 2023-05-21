@@ -29,6 +29,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::resource('pesan', PesanController::class)->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-  Route::resource('dashboard/', DashboardController::class);
+  Route::resource('dashboard', DashboardController::class);
 });
 
