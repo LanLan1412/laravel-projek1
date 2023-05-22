@@ -74,12 +74,13 @@ header nav {
 
 header nav h1 {
   font-size: 5rem;
+  margin-left: 4rem;
 }
 
 header nav > div {
   display: flex;
   justify-content: space-between;
-  width: 7vw;
+  width: 9vw;
 }
 
 header nav div div {
@@ -100,6 +101,7 @@ header nav div div p {
 header nav div button {
   background-color: inherit;
   cursor: pointer;
+  height: 20px;
 }
 
 header nav div svg {
@@ -131,10 +133,6 @@ main {
   transition: .5s all;
 }
 
-.card:hover {
-  background-color: var(--txt-third);
-}
-
 .card a {
   text-align: center;
   color: inherit;
@@ -142,6 +140,7 @@ main {
 
 .card a img {
   width: 300px;
+  height: 300px;
 }
 
 .card a div {

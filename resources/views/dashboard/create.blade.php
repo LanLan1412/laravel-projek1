@@ -21,7 +21,7 @@
     <input type="text" name="keterangan" id="keterangan" required placeholder="Masukkan Keterangan" value="{{ old('keterangan') }}">
   </div>
   <div>
-    <img class="img-preview">
+    <img class="img-preview" style="width: 500px">
     <label for="image">Gambar</label>
     <input onchange="previewImage()" type="file" name="image" id="image" required>
   </div>
@@ -39,7 +39,7 @@
 @error('keterangan')
   {{ $message }}
 @enderror
-@error('gambar')
+@error('image')
   {{ $message }}
 @enderror
 

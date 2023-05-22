@@ -12,7 +12,7 @@
         <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->nama_barang }}">
         <h2>{{ $produk->nama_barang }}</h2>
         <div>
-          <p><small>Rp.</small>{{ $produk->harga }}.000</p>
+          <p><small>Rp. </small>{{ number_format($produk->harga, 0, ',', '.') }}</p>
           <small>stok {{ $produk->stok }}</small>
         </div>
       </a>
