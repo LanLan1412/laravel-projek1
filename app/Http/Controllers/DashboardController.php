@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -39,12 +40,12 @@ class DashboardController extends Controller
             'harga' => 'required',
             'stok' => 'required',
             'category' => 'required',
-            'gambar' => 'image|file|max:2048',
+            'image' => 'image|file|max:2048',
             'keterangan' => 'required'
         ]);
 
-        if ($request->file('gambar')) {
-            $validateData['gambar'] = $request->file('gambar')->store('product-images');
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('product-images');
         }
 
         Barang::create($validateData);
@@ -80,8 +81,16 @@ class DashboardController extends Controller
             'harga' => 'required',
             'stok' => 'required',
             'category' => 'required',
+            'image' => 'image|file|max:2048',
             'keterangan' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('product-images');
+        }
 
         Barang::where('id', $request->id)->update($validateData);
         return redirect('/dashboard')->with('success', 'Product has been updated');
@@ -92,6 +101,10 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
+        $barang = Barang::where('id', $id)->first();
+        if ($barang->image) {
+            Storage::delete($barang->image);
+        }
         Barang::destroy($id);
         return redirect('/dashboard')->with('success', 'Product has been deleted!');
     }

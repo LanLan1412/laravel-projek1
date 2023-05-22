@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('stok');
             $table->string('keterangan');
             $table->string('category');
-            $table->string('gambar')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

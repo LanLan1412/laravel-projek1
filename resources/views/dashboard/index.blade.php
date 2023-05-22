@@ -6,7 +6,7 @@
 @endif
 @foreach ($products as $produk)
 <div class="card">
-  <img src="" alt="">
+  <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->nama_barang }}">
   <div>
     <h2>{{ $produk->nama_barang }}</h2>
     <div>

@@ -21,8 +21,9 @@
     <input type="text" name="keterangan" id="keterangan" required placeholder="Masukkan Keterangan" value="{{ old('keterangan') }}">
   </div>
   <div>
-    <label for="gambar">Gambar</label>
-    <input type="file" name="gambar" id="gambar" required>
+    <img class="img-preview">
+    <label for="image">Gambar</label>
+    <input onchange="previewImage()" type="file" name="image" id="image" required>
   </div>
   <button>Buat Product</button>
 </form>
@@ -41,3 +42,17 @@
 @error('gambar')
   {{ $message }}
 @enderror
+
+<script>
+  function previewImage() {
+    const image = document.querySelector('#image');
+    const imgPreview = document.querySelector('.img-preview')
+
+    imgPreview.style.display =  'block';
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function(oFREvent) {
+      imgPreview.src = oFREvent.target.result;
+    }
+  }
+</script>
