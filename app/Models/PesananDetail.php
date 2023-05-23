@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Barang;
+use App\Models\Pesanan;
 
 class PesananDetail extends Model
 {
@@ -12,10 +14,10 @@ class PesananDetail extends Model
     protected $fillable = ['pesanan_id', 'barang_id', 'jumlah', 'jumlah_harga'];
 
     public function barang() {
-        return $this->belongsTo('App\Barang', 'barang_id', 'id');
+        return $this->belongsTo('App\Models\Barang', 'barang_id', 'id');
     }
 
     public function pesanan() {
-        return $this->belongsTo('App\Pesanan', 'pesanan_id', 'id');
+        return $this->belongsTo('App\Models\Pesanan', 'pesanan_id', 'id');
     }
 }

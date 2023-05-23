@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Pesanan;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,6 @@ class User extends Authenticatable
     ];
 
     public function pesanan() {
-        return $this->hasMany('App\Pesanan', 'user_id', 'id');
+        return $this->hasMany('App\Models\Pesanan', 'user_id', 'id');
     }
 }

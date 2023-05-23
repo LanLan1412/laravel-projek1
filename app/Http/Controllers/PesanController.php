@@ -18,13 +18,50 @@ class PesanController extends Controller
         return redirect('/');
     }
 
+    public function checkout() {
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        if (!empty($pesanan)) {
+            $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        return view('pesan.checkout', compact('pesanan', 'pesanan_details'));
+        } else {
+            return view('pesan.checkout', [
+                'null' => 'Tidak Ada Barang di Keranjang'
+            ]);
+        }
+
+    }
+
+    public function konfirmasi() {
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan->status = 1;
+        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        foreach ($pesanan_details as $pesanan_detail) {
+            $barang   = Barang::where('id', $pesanan_detail->barang_id)->first();
+            $barang->stok = $barang->stok - $pesanan_detail->jumlah;
+            $barang->update();
+        }
+        $pesanan->update();
+        return redirect('/');
+    }
+
     public function index()
     {
-        $barangs = Barang::paginate(20);
-        return view('beranda', [
-            'barangs' => $barangs,
-            'title' => 'Home'
-        ]);
+        $barangs = Barang::all();
+        $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        if (!empty($pesanan_utama)) {
+            $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+            return view('beranda', [
+                'barangs' => $barangs,
+                'notif' => $notif,
+                'title' => 'Home'
+            ]);
+        } else {
+            return view('beranda', [
+                'barangs' => $barangs,
+                'notif' => '0',
+                'title' => 'Home'
+            ]);
+        }
     }
 
     /**
@@ -123,8 +160,14 @@ class PesanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        //
+        $pesanan_detail = PesananDetail::where('id', $id)->first();
+        $pesanan = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga - $pesanan_detail->jumlah_harga;
+        $pesanan->update();
+
+        $pesanan_detail->delete();
+        return redirect('/checkout');
     }
 }
