@@ -47,8 +47,8 @@ class PesanController extends Controller
     public function index()
     {
         $barangs = Barang::all();
-        $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
         if (!empty($pesanan_utama)) {
+            $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
             $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
             return view('beranda', [
                 'barangs' => $barangs,
