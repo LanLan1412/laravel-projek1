@@ -10,9 +10,9 @@
     <div class="card">
       <a href="/pesan/{{ $produk->nama_barang }}">
         @if ($produk->image === null)
-        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->nama_barang }}">
+        <img src="https://placehold.co/400" alt="{{ $produk->nama_barang }}">
         @else
-        <img src="https://fakeimg.pl/300x300?text=300+x+300" alt="{{ $produk->nama_barang }}">
+        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->nama_barang }}">
         @endif
         <h2>{{ $produk->nama_barang }}</h2>
         <div>

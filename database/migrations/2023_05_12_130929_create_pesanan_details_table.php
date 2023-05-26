@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('barang_id');
             $table->integer('pesanan_id');
             $table->integer('jumlah');
-            $table->integer('jumlah_harga')->nullable();
+            $table->integer('jumlah_harga');
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Pesanan;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\PesananDetail;
@@ -16,6 +17,17 @@ class PesanController extends Controller
      */
     public function pesan() {
         return redirect('/');
+    }
+
+    public function historyDetail($id) {
+        $pesanan = Pesanan::where('id', $id)->first();
+        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        return view('pesan.historyDetail', compact('pesanan', 'pesanan_details'));
+    }
+
+    public function history() {
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get();
+        return view('pesan.history', compact('pesanans'));
     }
 
     public function checkout() {
@@ -32,6 +44,11 @@ class PesanController extends Controller
     }
 
     public function konfirmasi() {
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if (empty($user->alamat) && empty($user->nohp)) {
+            return redirect('/profile');
+        }
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $pesanan->status = 1;
         $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
@@ -41,14 +58,14 @@ class PesanController extends Controller
             $barang->update();
         }
         $pesanan->update();
-        return redirect('/');
+        return redirect('/history/' . $pesanan->id);
     }
 
     public function index()
     {
         $barangs = Barang::all();
+        $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
         if (!empty($pesanan_utama)) {
-            $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
             $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
             return view('beranda', [
                 'barangs' => $barangs,
@@ -96,6 +113,7 @@ class PesanController extends Controller
             $pesanan->tanggal = $tanggal;
             $pesanan->status = 0;
             $pesanan->jumlah_harga = 0;
+            $pesanan->kode = mt_rand(100,999);
             $pesanan->save();
         }
 

@@ -15,7 +15,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required>
       </div>
-      <button>Register</button>
+      <button type="submit">Register</button>
     </form>
     @error('name')
         {{ $message }}
