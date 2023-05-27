@@ -9,25 +9,25 @@
       <title>XXX | {{ $title }}</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/{{ $css }}.css">
 
       <!-- Google Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
-      
-      {{--  <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />  --}}
     </head>
   <body>
-    <header>
-      @include('partials.navbar')
-    </header>
+    @if (Request::is('home'))
+      <header>
+        @include('partials.navbar')
+      </header>
+    @endif
     <main>
       @yield('main')
     </main>
     <footer>
       @include('partials.footer')
     </footer>
+    <script src="js/script.js"></script>
   </body>
 </html>

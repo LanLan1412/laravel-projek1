@@ -63,21 +63,36 @@ class PesanController extends Controller
 
     public function index()
     {
-        $barangs = Barang::all();
-        $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
-        if (!empty($pesanan_utama)) {
-            $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
-            return view('beranda', [
-                'barangs' => $barangs,
-                'notif' => $notif,
-                'title' => 'Home'
+        $barangs = Barang::latest();
+        if (request('search')) {
+            $barangs->where('nama_barang', 'like', '%' . request('search') . '%')->orWhere('keterangan', 'like', '%' . request('search') . '%');
+        }
+        if (auth()->user() === null) {
+            return view('pesan.index', [
+                'barangs' => $barangs->paginate(1),
+                'notif' => '0',
+                'title' => 'Home',
+                'css' => 'pesanIndex'
             ]);
         } else {
-            return view('beranda', [
-                'barangs' => $barangs,
-                'notif' => '0',
-                'title' => 'Home'
-            ]);
+            $pesanan_utama = Pesanan::where('user_id', auth()->user()->id)->where('status', 0)->first();
+            if (!empty($pesanan_utama)) {
+                $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+                return view('pesan.index', [
+                    'barangs' => $barangs->paginate(1),
+                    'notif' => $notif,
+                    'title' => 'Home',
+                    'css' => 'pesanIndex'
+                ]);
+            } else {
+                $notif = 0;
+                return view('pesan.index', [
+                    'barangs' => $barangs->paginate(1),
+                    'notif' => $notif,
+                    'title' => 'Home',
+                    'css' => 'pesanIndex'
+                ]);
+            }
         }
     }
 
@@ -154,7 +169,7 @@ class PesanController extends Controller
     {
 
         $barang = $barang::where('nama_barang', $nama_barang)->first();
-        return view('pesan.index', [
+        return view('pesan.show', [
             'barang' => $barang
         ]);
     }

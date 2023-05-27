@@ -17,7 +17,10 @@ use App\Http\Controllers\ProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('/', PesanController::class);
+Route::get('/', fn() => view('redireksi'));
+
+Route::get('/home', [PesanController::class, 'index']);
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -25,6 +28,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
 
 Route::get('/profile',  [ProfileController::class, 'index'])->middleware('auth');
 Route::post('/profile/update',  [ProfileController::class, 'update'])->middleware('auth');
