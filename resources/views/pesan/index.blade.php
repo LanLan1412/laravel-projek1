@@ -2,7 +2,7 @@
 
 @section('main')
 <div class="container">
-  <form action="/pesan" method="get" class="search">
+  <form action="/pesan" method="get" action="{{ route('pesan.index') }}" class="search">
     <div>
       <input type="search" placeholder="Search.." name="search" value="{{ request('search') }}">
       <button>cari</button>

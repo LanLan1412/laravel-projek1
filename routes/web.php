@@ -33,7 +33,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/profile',  [ProfileController::class, 'index'])->middleware('auth');
 Route::post('/profile/update',  [ProfileController::class, 'update'])->middleware('auth');
 
-Route::resource('pesan', PesanController::class)->middleware('auth');
+Route::resource('pesan', PesanController::class);
 Route::get('/checkout',  [PesanController::class, 'checkout'])->middleware('auth');
 Route::get('/checkout-confirm',  [PesanController::class, 'konfirmasi'])->middleware('auth');
 Route::get('/history', [PesanController::class, 'history'])->middleware('auth');

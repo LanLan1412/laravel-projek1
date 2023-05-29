@@ -23,6 +23,7 @@ body {
   position: relative;
   display: grid;
   place-items: center;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -31,7 +32,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -97,6 +98,7 @@ header nav .sidebar.show {
 header nav .nav-right {
   display: flex;
   justify-content: space-between;
+  padding-right: 2rem;
 }
 
 header nav .nav-right a {
@@ -210,4 +212,62 @@ main .produk .card h2 {
 main .produk .card div {
   color: var(--txt-primary);
   padding: 1rem 0;
+}
+
+main .container .paginator {
+  margin: 2rem 0;
+}
+
+main .container .paginator ul {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  font-size: 2rem;
+}
+
+main .container .paginator ul li span {
+  color: #888;
+}
+
+main .container .paginator ul li a {
+  color: var(--bg-secondary);
+}
+
+footer {
+  background-color: var(--bg-secondary);
+  color: var(--txt-third);
+}
+
+footer > div {
+  display: flex;
+}
+
+footer div div h3 {
+ color: var(--txt-third);
+}
+
+footer div div p {
+  color: #ccc;
+}
+
+footer div.sosial-media {
+  border-bottom: 1px solid var(--bg-primary);
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: .5rem;
+}
+
+footer div.sosial-media a svg {
+  width: 25px;
+}
+  
+footer > p {
+  text-align: center;
+  font-size: .9rem;
+  padding: 0 0 .5rem;
 }

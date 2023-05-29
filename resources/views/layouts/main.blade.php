@@ -6,7 +6,7 @@
       <meta name="description" content="tempatnya mencari baju anak muda terlengkap yang pernah ada">
       <meta name="keywords" content="baju anak muda">
 
-      <title>XXX | {{ $title }}</title>
+      <title>Source | {{ $title }}</title>
 
       <!-- CSS -->
       <link rel="stylesheet" href="css/{{ $css }}.css">
