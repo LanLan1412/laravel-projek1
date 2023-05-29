@@ -1,16 +1,23 @@
 <nav>
-  <img src="{{ asset('img/logo.png') }}" alt="Source">
-  <span onclick="openNav()" class="hamburger">
+  <span id="hamburger">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line> <line x1="3" y1="6" x2="21" y2="6"></line> <line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </span>
 
-  <div id="mySidenav" class="sidenav">
-    <a class="closebtn" onclick="closeNav()">&times;</a>
+  <!-- <div id="mySidenav" class="sidenav">
+    <a class="closebtn">&times;</a>
     <a href="#">About</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>
     <a href="#">Contact</a>
+  </div> -->
+  <div class="sidebar">
+    <a href="">a</a>
+    <a href="">a</a>
+    <a href="">a</a>
+    <a href="">a</a>
+    <a href="">a</a>
   </div>
+  <img src="{{ asset('img/logo.png') }}" alt="Source">
  
   <div class="nav-right">
     <div class="keranjang">

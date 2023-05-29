@@ -1,10 +1,20 @@
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
+const hamburger = document.querySelector('#hamburger');
+const sidenav = document.querySelector('.sidebar');
+hamburger.addEventListener('click', () => {
+  sidenav.classList.toggle('show');
+})
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.body.style.backgroundColor = "white";
-}
+window.addEventListener('click', (e) => {
+  if (e.target != hamburger && e.target != sidenav) {
+  }
+})
 
+// Slick
+$(document).ready(function(){
+  $('.your-class').slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,
+    arrows: false
+  });
+});

@@ -21,11 +21,18 @@ body {
   color: var(--txt-primary);
   font-family: "Lato", sans-serif;
   position: relative;
+  display: grid;
+  place-items: center;
 }
 
 ::selection {
   /* background-color: var(--bg--fourth); */
   /* color: var(--bg-primary); */
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .float-wa {
@@ -71,43 +78,20 @@ header nav img {
   width: 170px;
 }
 
-header nav .hamburger {
+header nav #hamburger {
   cursor: pointer;
 }
 
-header nav .sidenav {
-  height: 100%;
-  width: 0; 
+header nav .sidebar {
   position: fixed;
-  z-index: 1;
-  top: 0;
+  top: 60;
+  left: -100%;
+  height: 100vh;
+  background-color: #aaa;
+}
+
+header nav .sidebar.show {
   left: 0;
-  background-color: var(--bg-secondary);
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s;
-}
-
-header nav .sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-header nav .sidenav a:hover {
-  color: #f1f1f1;
-}
-
-header nav .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  cursor: pointer;
 }
 
 header nav .nav-right {
@@ -153,30 +137,77 @@ header nav a {
 }
 
 main .container .search {
-  margin: 1rem auto;
+  margin: 3rem auto;
   display: flex;
   justify-content: center;
 }
 
 main .container .search input {
-  width: 500px;
+  width: 550px;
   height: 50px;
   padding: 1rem;
   font-size: 1.4rem;
+  border-radius: inherit;
 }
 
 main .container .search input:focus {
-  outline: none;
+  outline: 2px solid;
 }
 
 main .container .search div {
-  border: 2px solid var(--txt-secondary);
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 3px 18px rgb(0 0 0 / 20%);
 }
 
 main .container .search button {
+  text-transform: uppercase;
   width: 100px;
   height: 50px;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   background-color: var(--txt-third);
   cursor: pointer;
+  right: 0;
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+}
+
+main .jumbotron {
+  margin-bottom: 5rem;
+}
+
+main .jumbotron .your-class {
+  width: 100vw;
+  height: 400px;
+}
+
+main .produk {
+  display: flex;
+  gap: 10px;
+  padding: 0 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+main .produk .card {
+  background-color: #fefefe;
+  width: 300px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-radius: 15px;
+  text-align: center;
+}
+
+main .produk .card img {
+  border-radius: 15px 15px 0 0;
+}
+
+main .produk .card h2 {
+  font-size: 1.2rem;
+  padding: 1rem 1rem 0;
+  color: var(--txt-primary);
+}
+
+main .produk .card div {
+  color: var(--txt-primary);
+  padding: 1rem 0;
 }
