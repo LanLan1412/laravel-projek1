@@ -15,9 +15,13 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+
+      <!-- Slick -->
+      <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     </head>
   <body>
-    @if (Request::is('home'))
+    @if (!Request::is('login') && !Request::is('register') && !Request::is('dashboard'))
       <header>
         @include('partials.navbar')
       </header>
@@ -28,6 +32,20 @@
     <footer>
       @include('partials.footer')
     </footer>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+      // Slick
+      $(document).ready(function(){
+        $('.your-class').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+        });
+      });
+    </script>
     <script src="js/script.js"></script>
   </body>
 </html>

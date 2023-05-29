@@ -48,16 +48,135 @@ body {
   top: 5;
 }
 
+header {
+  position: relative;
+}
+
 header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem;
+}
+
+header nav svg {
+  width: 25px;
+}
+
+header nav .profile svg {
+  width: 20px;
+}
+
+header nav img {
+  width: 170px;
 }
 
 header nav .hamburger {
   cursor: pointer;
 }
 
-header nav svg {
-  width: 35px;
+header nav .sidenav {
+  height: 100%;
+  width: 0; 
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-secondary);
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+header nav .sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+header nav .sidenav a:hover {
+  color: #f1f1f1;
+}
+
+header nav .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+header nav .nav-right {
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav .nav-right a {
+  display: flex;
+}
+
+header nav .keranjang {
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+header nav .profile {
+  margin: 0 10px 3px 0;
+}
+
+header nav .history {
+  margin: 0 10px 7px 0;
+}
+
+header nav .logout {
+  margin: 0 10px 0 0;
+}
+
+header nav .nav-right a p {
+  background-color: var(--bg-secondary);
+  color: var(--txt-third);
+  height: 14px;
+  width: 14px;
+  font-size: .7rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin-left: 1px;
+}
+
+header nav a {
+  color: var(--txt-primary);
+}
+
+main .container .search {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+main .container .search input {
+  width: 500px;
+  height: 50px;
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+
+main .container .search input:focus {
+  outline: none;
+}
+
+main .container .search div {
+  border: 2px solid var(--txt-secondary);
+}
+
+main .container .search button {
+  width: 100px;
+  height: 50px;
+  font-size: 1.3rem;
+  background-color: var(--txt-third);
+  cursor: pointer;
 }

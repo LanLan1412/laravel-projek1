@@ -2,13 +2,23 @@
 
 @section('main')
 <div class="container">
-  @auth
-    <h2>Welcome back, {{ auth()->user()->name }}</h2>
-  @endauth
-  <form action="/pesan" method="get">
-    <input type="search" placeholder="Search.." name="search" value="{{ request('search') }}">
-    <button>cari</button>
+  <form action="/pesan" method="get" class="search">
+    <div>
+      <input type="search" placeholder="Search.." name="search" value="{{ request('search') }}">
+      <button>cari</button>
+    </div>
   </form>
+  <section class="jumbotron">
+    <div class="your-class">
+      @foreach ($barangs as $produk)
+        @if ($produk->image === null)
+        <img src="https://placehold.co/400" alt="{{ $produk->nama_barang }}">
+        @else
+        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->nama_barang }}">
+        @endif
+      @endforeach
+    </div>
+  </section>
   <section class="produk">
     @foreach ($barangs as $produk)
     <div class="card">

@@ -69,7 +69,7 @@ class PesanController extends Controller
         }
         if (auth()->user() === null) {
             return view('pesan.index', [
-                'barangs' => $barangs->paginate(1),
+                'barangs' => $barangs->paginate(2),
                 'notif' => '0',
                 'title' => 'Home',
                 'css' => 'pesanIndex'
@@ -79,7 +79,7 @@ class PesanController extends Controller
             if (!empty($pesanan_utama)) {
                 $notif = PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
                 return view('pesan.index', [
-                    'barangs' => $barangs->paginate(1),
+                    'barangs' => $barangs->paginate(2),
                     'notif' => $notif,
                     'title' => 'Home',
                     'css' => 'pesanIndex'
@@ -87,7 +87,7 @@ class PesanController extends Controller
             } else {
                 $notif = 0;
                 return view('pesan.index', [
-                    'barangs' => $barangs->paginate(1),
+                    'barangs' => $barangs->paginate(2),
                     'notif' => $notif,
                     'title' => 'Home',
                     'css' => 'pesanIndex'
