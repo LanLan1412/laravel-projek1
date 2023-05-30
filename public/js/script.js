@@ -8,6 +8,11 @@ window.addEventListener('click', (e) => {
   if (e.target != hamburger && e.target != sidenav) {
   }
 })
+window.addEventListener("click", function (e) {
+  if (e.target != hamburger && e.target != sidenav) {
+    nav.classList.remove("show");
+  }
+});
 
 // Slick
 $(document).ready(function(){

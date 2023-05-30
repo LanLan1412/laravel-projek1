@@ -88,6 +88,7 @@ header nav .sidebar {
   top: 60;
   left: -100%;
   height: 100vh;
+  z-index: 999;
   background-color: #aaa;
 }
 
@@ -179,7 +180,8 @@ main .jumbotron {
 }
 
 main .jumbotron .your-class {
-  width: 100vw;
+  width: 55vw;
+  margin: 0 auto;
   height: 400px;
 }
 
@@ -206,6 +208,10 @@ main .produk .card img {
 main .produk .card h2 {
   font-size: 1.2rem;
   padding: 1rem 1rem 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--txt-primary);
 }
 
@@ -237,37 +243,95 @@ main .container .paginator ul li a {
 footer {
   background-color: var(--bg-secondary);
   color: var(--txt-third);
-}
-
-footer > div {
-  display: flex;
-}
-
-footer div div h3 {
- color: var(--txt-third);
-}
-
-footer div div p {
-  color: #ccc;
+  width: 100vw;
 }
 
 footer div.sosial-media {
   border-bottom: 1px solid var(--bg-primary);
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 1rem;
   padding-bottom: 1rem;
+  padding-top: 1rem;
   margin-bottom: .5rem;
+  margin-top: 50px;
+}
+
+footer div.sosial-media a {
+  border: 1px solid var(--txt-third);
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  transition: .3s;
+}
+
+footer div.sosial-media a:hover {
+  background-color: #aaa;
 }
 
 footer div.sosial-media a svg {
-  width: 25px;
+  width: 20px;
+  fill: var(--txt-third);
 }
   
 footer > p {
   text-align: center;
   font-size: .9rem;
   padding: 0 0 .5rem;
+}
+
+@media (max-width: 450px) {
+  header nav img {
+    margin-right: 80px;
+  }
+
+  header nav .nav-right {
+    display: none;
+  }
+  
+  main .container .search input {
+    width: 350px;
+    height: 40px;
+    padding: .6rem;
+    font-size: 1.1rem;
+  }
+
+  main .container .search button {
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  main .jumbotron .your-class {
+    width: 100vw;
+  }
+
+  main .jumbotron .your-class img {
+    margin-top: -100px;
+  }
+
+  main .produk {
+    padding: 0;
+    margin-top: -200px;
+  }
+
+  main .produk .card {
+    width: 160px;
+  }
+
+  main .produk .card img {
+    width: 160px;
+  }
+
+  main .produk .card h2 {
+    font-size: 1rem;
+  }
+
+  main .container .paginator ul {
+    font-size: 1.3rem;
+  }
+
 }
