@@ -9,7 +9,7 @@
       <title>XXX | Login</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{{ asset('css/loginIndex.css') }}">
 
       <!-- Google Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,35 +19,42 @@
     </head>
   <body>
     <section class="login-row">
-    <section class="success">
-      @if (session()->has('success'))
-      <p>{{ session('success') }}</p>
-      @endif
+      <div class="errors">  
+        @error('email')
+          <div class="error">
+            {{ $message }}
+          </div>
+        @enderror
+        @error('password')
+          <div class="error">
+            {{ $message }}
+          </div>
+        @enderror
+        @if (session()->has('loginError'))
+          <div class="error">{{ session('loginError') }}</div>
+        @endif
+      </div>
+      <section class="success">
+        @if (session()->has('success'))
+        <p class="berhasil">{{ session('success') }}</p>
+        @endif
+      </section>
+      <section class="login">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+          @csrf
+          <div class="li">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="email@gmail.com" required autofocus value="{{ old('email') }}">
+          </div>
+          <div class="li">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+          </div>
+          <button>Login</button>
+        </form>
+        <small class="direct">Not registered? <a href="/register">Register Now!</a></small>
+      </section>
     </section>
-    <section class="error">
-      @if (session()->has('loginError'))
-      <p>{{ session('loginError') }}</p>
-      @endif
-    </section>
-    <section class="login">
-      <h1>Login</h1>
-      <form action="/login" method="post">
-        @csrf
-        <div class="li">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="email@gmail.com" required autofocus value="{{ old('email') }}">
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" required>
-        </div>
-        <button>Login</button>
-      </form>
-    @error('email')
-        {{ $message }}
-    @enderror
-    <small>Not registered? <a href="/register">Register Now!</a></small>
-  </section>
-</section>
   </body>
 </html>

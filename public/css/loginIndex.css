@@ -1,0 +1,104 @@
+:root {
+  --bg-primary: #EEEEEE;
+  --bg-secondary: #2C3333;
+  --bg-third: #FFFAF4;
+  --txt-primary: #212A3E;
+  --txt-secondary: #9BA4B5;
+  --txt-third: #DCD7C9;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  border: none;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--txt-primary);
+  font-family: "Lato", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+::selection {
+  /* background-color: var(--bg--fourth); */
+  /* color: var(--bg-primary); */
+}
+
+.errors .error {
+  background-color: salmon;
+  margin-bottom: 10px;
+  border: 1px solid var(--txt-primary);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+.success .berhasil {
+  background-color: greenyellow;
+  margin-bottom: 10px;
+  border: 1px solid var(--txt-primary);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+.login-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.login {
+  background-color: #fff;
+  padding: 0 3rem 2rem;
+  width: 45vh;
+}
+
+.login h1 {
+  color: var(--txt-primary);
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 2.5rem;
+}
+
+.login .li {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.login .li label {
+  position: absolute;
+  font-size: .8rem;
+  top: -7;
+  background-color: #fff;
+  left: 10;
+}
+
+.login .li input {
+  height: 2rem;
+  width: 100%;
+  border: 2px solid var(--txt-secondary);
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.login .li input:focus {
+  outline: none;
+}
+
+.login button {
+  background-color: var(--txt-secondary);
+  color: #fff;
+  width: 100%;
+  padding: .5rem 0;
+}
+
+.login .direct a {
+  color: salmon;
+}

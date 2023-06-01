@@ -20,7 +20,7 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/home');
         }
 
         return back()->with('loginError', 'Login failed!');
@@ -30,6 +30,6 @@ class LoginController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/home');
     }
 }

@@ -1,18 +1,18 @@
-const hamburger = document.querySelector('#hamburger');
-const sidenav = document.querySelector('.sidebar');
-hamburger.addEventListener('click', () => {
-  sidenav.classList.toggle('show');
-})
+// const hamburger = document.querySelector('#hamburger');
+// const sidenav = document.querySelector('.sidebar');
+// hamburger.addEventListener('click', () => {
+//   sidenav.classList.toggle('show');
+// })
 
-window.addEventListener('click', (e) => {
-  if (e.target != hamburger && e.target != sidenav) {
-  }
-})
-window.addEventListener("click", function (e) {
-  if (e.target != hamburger && e.target != sidenav) {
-    nav.classList.remove("show");
-  }
-});
+// window.addEventListener('click', (e) => {
+//   if (e.target != hamburger && e.target != sidenav) {
+//   }
+// })
+// window.addEventListener("click", function (e) {
+//   if (e.target != hamburger && e.target != sidenav) {
+//     nav.classList.remove("show");
+//   }
+// });
 
 // Slick
 $(document).ready(function(){
