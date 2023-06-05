@@ -8,7 +8,7 @@
       <button>cari</button>
     </div>
   </form>
-  <section class="jumbotron">
+  {{--  <section class="jumbotron">
     <div class="your-class">
       @foreach ($barangs as $produk)
         @if ($produk->image === null)
@@ -18,7 +18,7 @@
         @endif
       @endforeach
     </div>
-  </section>
+  </section>  --}}
   <section class="produk">
     @foreach ($barangs as $produk)
     <div class="card">

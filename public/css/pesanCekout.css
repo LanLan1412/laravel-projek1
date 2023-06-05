@@ -1,0 +1,78 @@
+:root {
+  --bg-primary: #EEEEEE;
+  --bg-secondary: #2C3333;
+  --bg-third: #FFFAF4;
+  --txt-primary: #212A3E;
+  --txt-secondary: #9BA4B5;
+  --txt-third: #DCD7C9;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  border: none;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--txt-primary);
+  font-family: "Lato", sans-serif;
+}
+
+::selection {
+  /* background-color: var(--bg--fourth); */
+  /* color: var(--bg-primary); */
+}
+
+main {
+}
+
+main .card {
+  position: relative;
+  display: flex;
+  width: 70%;
+  padding: .5rem 1rem;
+  margin: auto;
+}
+
+main .card i {
+  position: absolute;
+}
+
+main .card img {
+  width: 100px;
+}
+
+main .card h2 {
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+main .card .delete {
+  position: absolute;
+  right: 100;
+  bottom: 0;
+  background-color: var(--txt-secondary);
+  color: var(--bg-primary);
+}
+
+main .card .order {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-secondary);
+  color: var(--bg-third);
+}
+
+.nulls {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.null {
+}

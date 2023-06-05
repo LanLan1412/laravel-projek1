@@ -34,13 +34,12 @@ class PesanController extends Controller
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         if (!empty($pesanan)) {
             $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
-        return view('pesan.checkout', compact('pesanan', 'pesanan_details'));
+            return view('pesan.checkout', compact('pesanan', 'pesanan_details'));
         } else {
             return view('pesan.checkout', [
                 'null' => 'Tidak Ada Barang di Keranjang'
             ]);
         }
-
     }
 
     public function konfirmasi() {

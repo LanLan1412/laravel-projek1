@@ -23,7 +23,7 @@ class Barang extends Model
     
 
     public function pesanan_detail() {
-        return $this->hasMany('App\Models\PesananDetail', 'barang_id', 'id');
+        return $this->hasMany(PesananDetail::class, 'barang_id', 'id');
     }
 
     public function getRouteKeyName()

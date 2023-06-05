@@ -1,0 +1,83 @@
+:root {
+  --bg-primary: #EEEEEE;
+  --bg-secondary: #2C3333;
+  --bg-third: #FFFAF4;
+  --txt-primary: #212A3E;
+  --txt-secondary: #9BA4B5;
+  --txt-third: #DCD7C9;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  border: none;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--txt-primary);
+  font-family: "Lato", sans-serif;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+}
+
+::selection {
+  /* background-color: var(--bg--fourth); */
+  /* color: var(--bg-primary); */
+}
+
+.card {
+  display: flex;
+  background-color: var(--txt-secondary);
+  width: 80vw;
+}
+
+.card img {
+  width: 400px;
+  padding: 0 2rem 0 0;
+}
+
+.card h1 {
+  padding: 2rem 0 0;
+}
+
+.card p {
+  padding: 0 0 1rem;
+}
+
+.card .keterangan {
+  width: 90%;
+}
+
+.card input {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+}
+
+.card input:focus {
+  outline: none;
+}
+
+.card input[type="number"]::-webkit-inner-spin-button,
+.card input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.card input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.card .cart {
+  background-color: var(--txt-primary);
+  color: var(--bg-third);
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+}
+

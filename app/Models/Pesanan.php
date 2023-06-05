@@ -14,10 +14,10 @@ class Pesanan extends Model
     protected $fillable = ['user_id', 'tanggal', 'status', 'jumlah_harga'];
 
     public function user() {
-        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function pesanan_detail() {
-        return $this->hasMany('App\Models\PesananDetail', 'pesanan_id', 'id');
+        return $this->hasMany(PesananDetail::class, 'pesanan_id', 'id');
     }
 }
