@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MixedController;
 use App\Http\Controllers\PesanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-
 Route::get('/profile',  [ProfileController::class, 'index'])->middleware('auth');
 Route::post('/profile/update',  [ProfileController::class, 'update'])->middleware('auth');
 
@@ -40,5 +40,6 @@ Route::get('/history/{id}', [PesanController::class, 'historyDetail'])->middlewa
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::resource('dashboard', DashboardController::class);
+  Route::get('/pesanan', [MixedController::class, 'order']);
 });
 

@@ -34,7 +34,7 @@
               <label for="jumlah_pesan">Jumlah Pesanan : </label>
               <input type="number" name="jumlah_pesan" id="jumlah_pesan" required value="{{ old('jumlah_pesan') }}">
             </div>
-            <button class="cart">Masukkan Keranjang</button>
+            <button class="cart">Add Cart</button>
           </form>
         </div>
         @error('nama_barang')

@@ -78,6 +78,7 @@ body {
   background-color: var(--txt-primary);
   color: var(--bg-third);
   cursor: pointer;
-  padding: 1rem 1.5rem;
+  padding: .5rem 1rem;
+  margin-top: 10px;
 }
 

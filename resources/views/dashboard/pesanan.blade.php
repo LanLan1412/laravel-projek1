@@ -20,7 +20,7 @@
               <td>
                   @if ($pesanan->status == 1)
                       <i>Sudah pesan & belum dibayar</i>
-                  @else
+                  @elseif ($pesanan->status == 2)
                       <i>Sudah dibayar</i>
                   @endif
               </td>

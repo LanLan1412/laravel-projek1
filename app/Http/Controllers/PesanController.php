@@ -26,7 +26,9 @@ class PesanController extends Controller
     }
 
     public function history() {
-        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get();
+        // $expired = Carbon::now()->subDays(2);
+        // $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get();
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', 1)->get();
         return view('pesan.history', compact('pesanans'));
     }
 
@@ -108,6 +110,9 @@ class PesanController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $id = $request->id;
         $barang = Barang::where('id', $id)->first();
         $tanggal = Carbon::now();
@@ -158,7 +163,7 @@ class PesanController extends Controller
         $pesanan->jumlah_harga = $pesanan->jumlah_harga + $barang->harga * $request->jumlah_pesan;
         $pesanan->update();
 
-        return redirect('/')->with('success', 'berhasil menambahkan kekeranjang');
+        return redirect('/home')->with('success', 'berhasil menambahkan kekeranjang');
     }
 
     /**
